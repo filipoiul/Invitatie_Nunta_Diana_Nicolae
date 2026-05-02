@@ -1,0 +1,653 @@
+:root{
+    /* ===== CULORI - MODIFICĂ AICI ===== */
+    --gold: #c5a059;
+    --gold-dark: #a0813e;
+    --cream: #f9f7f2;
+    --white: #ffffff;
+    --black: #1a1a1a;
+    --dark-bg: #111111;
+    --overlay: rgba(0,0,0,0.5);
+    
+    /* ===== FONTURI - MODIFICĂ AICI ===== */
+    --font-main: 'Cormorant Garamond', serif;
+    --font-title: 'Great Vibes', cursive;
+    --font-accent: 'Libre Baskerville', serif;
+    --font-timer: 'Cormorant Garamond', serif;
+}
+
+*{box-sizing:border-box;}
+
+body{
+margin:0;
+font-family:var(--font-main);
+color:var(--gold);
+overflow-x:hidden;
+transition: all 0.5s ease;
+background-color: var(--cream);
+}
+
+/* Clasă pentru fundalul de mulțumire */
+body.thankyou-background {
+    background-image: url('imagini/Va_multumim.jpg');
+    background-size: contain;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: var(--cream);
+}
+
+body.thankyou-background .confirmare {
+    background: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    padding: 100px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+body.thankyou-background .confirmare h2,
+body.thankyou-background .success {
+    color: var(--gold);
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    background: rgba(255,255,255,0.3);
+    padding: 20px 40px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+body.thankyou-background .success {
+    font-size: 3rem;
+    display: block !important;
+    text-align: center;
+}
+
+body.thankyou-background .rsvp-form,
+body.thankyou-background .confirmare-intro,
+body.thankyou-background .confirmare h2 {
+    display: none !important;
+}
+
+/* NAVBAR */
+.header{
+position:fixed;
+top:0;
+width:100%;
+z-index:1000;
+background:linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+transition: background 0.3s ease;
+}
+
+body.thankyou-background .header {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+}
+
+.logo{
+font-family:var(--font-title);
+color:var(--white);
+font-size:2.3rem;
+}
+
+nav{
+display:flex;
+gap:30px;
+}
+
+nav a{
+color:var(--white);
+text-decoration:none;
+font-family:var(--font-accent);
+font-size:1.8rem;
+transition:opacity 0.3s;
+}
+
+nav a:hover{
+opacity:0.7;
+}
+
+/* MOBILE */
+.menu-toggle{
+display:none;
+width:30px;
+height:30px;
+border-radius:50%;
+background:var(--gold);
+position:relative;
+cursor:pointer;
+border:none;
+}
+
+.menu-toggle span{
+position:absolute;
+width:55%;
+height:2px;
+background:var(--white);
+left:50%;
+transform:translateX(-50%);
+}
+
+.menu-toggle span:nth-child(1){ top:9px; }
+.menu-toggle span:nth-child(2){ top:14px; }
+.menu-toggle span:nth-child(3){ top:19px; }
+
+.side-menu{
+position:fixed;
+top:0;
+right:-100%;
+width:260px;
+height:100%;
+background:var(--dark-bg);
+padding-top:100px;
+transition:.4s;
+z-index:1000;
+}
+
+.side-menu.active{ right:0; }
+
+.side-menu a{
+display:block;
+color:var(--white);
+padding:15px 30px;
+text-decoration:none;
+font-family:var(--font-accent);
+}
+
+.overlay{
+position:fixed;
+width:100%;
+height:100%;
+background:var(--overlay);
+opacity:0;
+pointer-events:none;
+transition:0.3s;
+z-index:999;
+}
+
+.overlay.active{
+opacity:1;
+pointer-events:auto;
+}
+
+/* HERO */
+.hero{
+min-height:100vh;
+background:url('imagini/Start.jpg') center 25% / cover no-repeat;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+color:var(--white);
+text-align:center;
+padding:40px 20px;
+position:relative;
+}
+
+.hero::before{
+content:'';
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.3);
+}
+
+.hero *{
+position:relative;
+z-index:1;
+}
+
+.hero .intro-text {
+font-size:2.3rem;
+margin-bottom:15px;
+}
+
+.hero h1 {
+font-family:var(--font-title);
+font-size:8rem;
+margin:0 0 10px 0;
+}
+
+.hero .sponsor-text {
+font-size:2.3rem;
+margin:0 0 5px 0;
+}
+
+.hero .sponsor-names {
+font-size:2.3rem;
+margin:0 0 80px 0;
+font-weight:600;
+letter-spacing:1px;
+}
+
+.hero .invitation-group {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 1.5px;
+margin-top: 0px;
+}
+
+.hero .invitation-text {
+font-size:2.3rem;
+margin:0;
+}
+
+.hero .date {
+margin-top:0;
+letter-spacing:2px;
+font-size:4.0rem;
+}
+
+/* NOI */
+.noi{
+padding:100px 20px;
+text-align:center;
+background:var(--cream);
+}
+
+.noi h2{
+font-family:var(--font-title);
+font-size:5rem;
+color:var(--gold);
+margin-bottom:30px;
+}
+
+.noi-story {
+max-width: 700px;
+margin: 0 auto 50px auto;
+font-family: var(--font-main);
+font-size: 2.3rem;
+line-height: 1.8;
+color: var(--black);
+font-style: italic;
+padding: 0 20px;
+}
+
+.noi-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+max-width:1100px;
+margin:auto;
+}
+
+.noi-grid img{
+width:100%;
+height:320px;
+object-fit:cover;
+object-position: center 25%;
+border-radius:10px;
+}
+
+/* PARALLAX */
+.parallax{
+height:60vh;
+background:url('imagini/Restaurant.jpg') center 40% / cover no-repeat fixed;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+.parallax .timer-title {
+font-size: 3rem;
+font-family: var(--font-title);
+margin-bottom: 30px;
+color: var(--black);
+text-shadow: none;
+background: rgba(255,255,255,0.7);
+padding: 10px 30px;
+border-radius: 50px;
+display: inline-block;
+letter-spacing: 2px;
+}
+
+/* TIMER */
+.countdown-wrapper{
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+.timer-item{
+text-align:center;
+}
+
+.timer-circle{
+width:100px;
+height:100px;
+border-radius:50%;
+border:2px solid var(--gold);
+background:rgba(0,0,0,0.6);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+transition:all 0.3s;
+}
+
+.timer-circle:hover{
+transform:scale(1.05);
+border-color:var(--white);
+background:rgba(0,0,0,0.8);
+}
+
+.timer-label{
+font-family:var(--font-accent);
+font-size:2.0rem;
+letter-spacing:1px;
+color:var(--black);
+background:var(--gold);
+padding:5px 10px;
+border-radius:20px;
+margin-bottom:10px;
+display:inline-block;
+font-weight:600;
+}
+
+.timer-number{
+font-family:var(--font-timer);
+font-size:4rem;
+font-weight:bold;
+color:var(--gold);
+}
+
+/* UNDE */
+.unde{
+padding:100px 20px;
+background:var(--cream);
+text-align:center;
+}
+
+.unde h2{
+font-family:var(--font-title);
+font-size:5rem;
+color:var(--gold);
+margin-bottom:15px;
+}
+
+.unde-subtitle{
+font-family:var(--font-accent);
+font-size:2.3rem;
+color:var(--gold-dark);
+margin-bottom:50px;
+font-style:italic;
+}
+
+.events-container{
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+max-width:1200px;
+margin:auto;
+}
+
+.event-card{
+flex:1;
+min-width:300px;
+background:var(--white);
+border-radius:20px;
+padding:30px 25px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+transition:transform 0.3s, box-shadow 0.3s;
+text-align:center;
+}
+
+.event-card:hover{
+transform:translateY(-5px);
+box-shadow:0 15px 40px rgba(0,0,0,0.15);
+}
+
+.event-icon{
+width:80px;
+height:80px;
+margin:0 auto 20px auto;
+border-radius:50%;
+object-fit:cover;
+object-position: center 30%;
+border:2px solid var(--gold);
+padding:5px;
+}
+
+.event-card h3{
+font-family:var(--font-title);
+font-size:3.2rem;
+color:var(--gold);
+margin-bottom:20px;
+}
+
+.event-time{
+font-family:var(--font-accent);
+font-size:2.3rem;
+color:var(--gold-dark);
+font-weight:600;
+margin-bottom:15px;
+}
+
+.event-location-name{
+font-family:var(--font-main);
+font-size:1.8rem;
+color:var(--black);
+font-weight:600;
+margin-bottom:10px;
+}
+
+.event-address{
+font-family:var(--font-main);
+font-size:1.2rem;
+color:#555;
+line-height:1.5;
+margin-bottom:25px;
+}
+
+.map-btn{
+display:inline-block;
+background:var(--gold);
+color:var(--black);
+font-family:var(--font-accent);
+font-size:1rem;
+font-weight:bold;
+padding:12px 30px;
+border-radius:30px;
+text-decoration:none;
+transition:all 0.3s;
+cursor:pointer;
+border:none;
+}
+
+.map-btn:hover{
+background:var(--gold-dark);
+transform:scale(1.05);
+color:var(--white);
+}
+
+/* CONFIRMARE */
+.confirmare{
+padding:100px 20px;
+text-align:center;
+background:var(--white);
+transition: all 0.5s ease;
+}
+
+.confirmare h2{
+font-family:var(--font-title);
+font-size:5rem;
+color:var(--gold);
+margin-bottom:20px;
+}
+
+.confirmare-intro {
+max-width: 550px;
+margin: 0 auto 40px auto;
+font-family: var(--font-main);
+font-size: 1.8rem;
+line-height: 1.6;
+color: var(--black);
+text-align: center;
+}
+
+.confirmare-intro strong {
+color: var(--gold);
+font-weight: 600;
+}
+
+.rsvp-form{
+max-width:500px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.rsvp-form input,
+.rsvp-form select,
+.rsvp-form textarea{
+padding:12px;
+border:none;
+border-bottom:1px solid var(--gold);
+background:transparent;
+font-family:var(--font-main);
+font-size:2.3rem;
+}
+
+.rsvp-form input:focus,
+.rsvp-form select:focus,
+.rsvp-form textarea:focus{
+outline:none;
+border-bottom-color:var(--gold-dark);
+}
+
+.label-persoane{
+margin-top:20px;
+margin-bottom:8px;
+font-family:var(--font-accent);
+font-size:2.3rem;
+letter-spacing:1.5px;
+color:var(--gold);
+}
+
+.persoane-btns{
+display:flex;
+justify-content:center;
+gap:10px;
+}
+
+.persoane-btns button{
+width:45px;
+height:45px;
+border-radius:50%;
+border:1px solid var(--gold);
+background:transparent;
+color:var(--gold);
+cursor:pointer;
+font-weight:bold;
+font-size:1.8rem;
+transition:.3s;
+}
+
+.persoane-btns button.active,
+.persoane-btns button:hover{
+background:var(--gold);
+color:var(--black);
+}
+
+.rsvp-form button[type="submit"]{
+background:var(--gold);
+color:var(--black);
+font-weight:bold;
+padding:16px;
+border:none;
+cursor:pointer;
+font-family:var(--font-accent);
+font-size:1.8rem;
+transition:0.3s;
+}
+
+.rsvp-form button[type="submit"]:hover{
+background:var(--gold-dark);
+transform:scale(0.98);
+color:var(--white);
+}
+
+.success{
+display:none;
+margin-top:20px;
+font-size:2.3rem;
+color:var(--gold);
+}
+
+/* MOBILE */
+@media(max-width:900px){
+nav{display:none;}
+.menu-toggle{
+display:flex;
+align-items:center;
+justify-content:center;
+}
+.noi-grid{grid-template-columns:1fr;}
+.hero h1 {font-size:5rem;}
+.hero .intro-text {font-size:2.3rem;}
+.hero .sponsor-text,
+.hero .sponsor-names {font-size:1.8rem;}
+.hero .sponsor-names {margin-bottom: 40px;}
+.hero .invitation-text {font-size:1.8rem;}
+.hero .date {font-size:2.3rem;}
+.hero .invitation-group {gap: 8px;}
+.parallax .timer-title {font-size: 2rem;padding: 8px 20px;}
+.noi h2 {font-size:5rem;}
+.noi-story {font-size:1.8rem;margin-bottom: 40px;}
+.timer-circle{width:85px;height:85px;}
+.timer-number{font-size:2.3rem;}
+.timer-label{font-size:1.2rem;}
+.countdown-wrapper{gap:20px;}
+.unde h2 {font-size:3.2rem;}
+.unde-subtitle {font-size:1.8rem;}
+.event-card h3 {font-size:1.9rem;}
+.event-time {font-size:2.3rem;}
+.event-location-name {font-size:2.3rem;}
+.event-address {font-size:1.5rem;}
+.map-btn {font-size:1.8rem;padding:14px 35px;}
+.event-icon{width:75px;height:75px;}
+.confirmare h2 {font-size:3.8rem;}
+.confirmare-intro {font-size:1.8rem;margin-bottom: 35px;}
+.rsvp-form input,
+.rsvp-form select,
+.rsvp-form textarea {font-size:1.8rem;}
+.label-persoane {font-size:1.8rem;}
+.persoane-btns button {font-size:1.5rem;width:50px;height:50px;}
+.rsvp-form button[type="submit"] {font-size:1.4rem;padding:18px;}
+.success {font-size:2.4rem;}
+.noi-grid img {height:280px;}
+body.thankyou-background .success {font-size: 2rem;padding: 15px 25px;}
+}
+
+@media(max-width:480px){
+.hero h1 {font-size:3.8rem;}
+.hero .intro-text {font-size:1.8rem;}
+.hero .sponsor-text,
+.hero .sponsor-names,
+.hero .invitation-text {font-size:1.5rem;}
+.hero .sponsor-names {margin-bottom: 25px;}
+.hero .date {font-size:1.6rem;}
+.parallax .timer-title {font-size: 1.5rem;padding: 6px 15px;}
+.timer-circle{width:70px;height:70px;}
+.timer-number{font-size:1.8rem;}
+.event-card {padding:20px 15px;}
+.event-card h3 {font-size:2.3rem;}
+.event-time {font-size:1.4rem;}
+.event-location-name {font-size:1.5rem;}
+.map-btn {font-size:1rem;padding:10px 25px;}
+.confirmare h2 {font-size:3.3rem;}
+.confirmare-intro {font-size:1.7rem;}
+body.thankyou-background .success {font-size: 1.5rem;padding: 12px 20px;}
+}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Diana & Nicolae - Nunta noastră</title>
+
+<!-- ============================================ -->
+<!-- META TAG-URI PENTRU PREVIZUALIZARE SOCIALĂ -->
+<!-- ============================================ -->
+
+<!-- Titlul care apare în previzualizare -->
+<meta property="og:title" content="Diana & Nicolae - Nunta noastră">
+
+<!-- O scurtă descriere -->
+<meta property="og:description" content="Alătură-te nouă pe 23 August 2026 pentru a sărbători împreună! Detalii eveniment și confirmare prezență.">
+
+<!-- Link-ul complet către imaginea ta -->
+<meta property="og:image" content="https://filipoiul.github.io/Invitatie_Nunta_Diana_Nicolae/imagini/social-preview.jpg">
+
+<!-- Tipul site-ului -->
+<meta property="og:type" content="website">
+
+<!-- URL-ul complet al site-ului tău -->
+<meta property="og:url" content="https://filipoiul.github.io/Invitatie_Nunta_Diana_Nicolae/">
+
+<!-- Pentru Facebook -->
+<meta property="fb:app_id" content="">
+
+<!-- Pentru Twitter/X - asigură-te că afișează imaginea mare -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Diana & Nicolae - Nunta noastră">
+<meta name="twitter:description" content="Alătură-te nouă pe 23 August 2026 pentru a sărbători împreună! Detalii eveniment și confirmare prezență.">
+<meta name="twitter:image" content="https://filipoiul.github.io/Invitatie_Nunta_Diana_Nicolae/imagini/social-preview.jpg">
+
+<!-- Meta tag-uri standard pentru SEO și compatibilitate -->
+<meta name="description" content="Invitație la nunta Dianei și lui Nicolae. Evenimentul va avea loc pe 23 August 2026. Completează formularul de confirmare.">
+<meta name="keywords" content="nunta, invitatie, Diana, Nicolae, 23 August 2026, cununie, petrecere">
+<meta name="author" content="Diana & Nicolae">
+
+<!-- ============================================ -->
+<!-- FONTURI ȘI STILURI -->
+<!-- ============================================ -->
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;600&family=Libre+Baskerville&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div class="header">
+<div class="logo">Diana &amp; Nicolae</div>
+
+<nav>
+<a href="#noi">Noi</a>
+<a href="#unde">Unde</a>
+<a href="#confirmare">Confirmare</a>
+</nav>
+
+<button class="menu-toggle" onclick="toggleMenu()">
+<span></span><span></span><span></span>
+</button>
+</div>
+
+<div class="side-menu" id="sideMenu">
+<a href="#noi" onclick="closeMenu()">Noi</a>
+<a href="#unde" onclick="closeMenu()">Unde</a>
+<a href="#confirmare" onclick="closeMenu()">Confirmare</a>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+<!-- SECȚIUNEA HERO -->
+<section class="hero">
+    <p class="intro-text">Cu dragoste și emoție</p>
+    <h1>Diana &amp; Nicolae</h1>
+    <p class="sponsor-text">Împreună cu nașii</p>
+    <p class="sponsor-names">Daniela &amp; Cosmin Constantin</p>
+    
+    <div class="invitation-group">
+        <p class="invitation-text">Vă invităm să ne fiți alături</p>
+        <div class="date">23 August 2026</div>
+    </div>
+</section>
+
+<!-- SECȚIUNEA NOI CU POVESTE -->
+<section class="noi" id="noi">
+<h2>Noi</h2>
+<div class="noi-story">
+    Într-o zi de 23 aprilie, acum opt ani, destinele noastre s-au întâlnit.<br>
+    De atunci, scriem împreună o poveste de iubire, armonie și încredere.
+</div>
+<div class="noi-grid">
+<img src="imagini/Diana.jpg" alt="Diana">
+<img src="imagini/Diana&Nicolae.jpg" alt="Diana & Nicolae">
+<img src="imagini/Nicolae.jpg" alt="Nicolae">
+</div>
+</section>
+
+<!-- SECȚIUNEA PARALLAX CU TIMER -->
+<section class="parallax">
+<div class="timer-title">Timp rămas până la marele eveniment</div>
+<div class="countdown-wrapper" id="countdownWrapper"></div>
+</section>
+
+<section class="unde" id="unde">
+<h2>Detaliile evenimentului</h2>
+<div class="unde-subtitle">Când și unde</div>
+<div class="events-container">
+    
+    <div class="event-card">
+        <img src="imagini/Cununie-Religioasa.jpg" alt="Cununie Religioasă" class="event-icon" onerror="this.src='imagini/Cununie-Religioasa.png'">
+        <h3>Cununia Religioasă</h3>
+        <div class="event-time">Duminică, 23 August 2026 • Ora 15:00</div>
+        <div class="event-location-name">Biserica Sfântul Elefterie</div>
+        <div class="event-address">Strada Sfântul Elefterie 3<br>București, Sectorul 5</div>
+        <button class="map-btn" onclick="openMap('church')">🗺️ Vezi harta</button>
+    </div>
+    
+    <div class="event-card">
+        <img src="imagini/Petrecere.jpg" alt="Petrecere" class="event-icon" onerror="this.src='imagini/Petrecere.png'">
+        <h3>Petrecerea</h3>
+        <div class="event-time">Duminică, 23 August 2026 • Ora 18:00</div>
+        <div class="event-location-name">Signature Events - Salon The Secret Garden</div>
+        <div class="event-address">Strada Popa Lazăr, 5-25<br>București, Sectorul 2</div>
+        <button class="map-btn" onclick="openMap('venue')">🗺️ Vezi harta</button>
+    </div>
+    
+</div>
+</section>
+
+<!-- SECȚIUNEA CONFIRMARE CU TEXT INTRODUCTIV -->
+<section class="confirmare" id="confirmare">
+
+<h2>Confirmare</h2>
+
+<div class="confirmare-intro">
+    Te rugăm să completezi formularul de mai jos, pentru a ne anunța decizia ta de participare.<br>
+    <strong>Data limită: 01.08.2026</strong>
+</div>
+
+<form id="rsvpForm" class="rsvp-form">
+
+<select id="particip" required>
+    <option value="" disabled selected>Veți participa la eveniment?</option>
+    <option value="Da">Da, voi participa</option>
+    <option value="Nu">Nu, nu pot participa</option>
+</select>
+
+<input id="numePrincipal" placeholder="Numele dumneavoastră">
+
+<div id="restForm" style="display:none;">
+
+<div class="label-persoane">Câte persoane?</div>
+
+<div class="persoane-btns">
+<button type="button" onclick="selectPersoane(1,this)">1</button>
+<button type="button" onclick="selectPersoane(2,this)">2</button>
+<button type="button" onclick="selectPersoane(3,this)">3</button>
+<button type="button" onclick="selectPersoane(4,this)">4</button>
+</div>
+
+<div id="persoaneContainer"></div>
+
+<select id="parcareSelect">
+    <option value="" disabled selected>Doriți parcare?</option>
+    <option value="nu">Nu</option>
+    <option value="da">Da</option>
+</select>
+
+<input id="parcareInput" placeholder="Număr înmatriculare" style="display:none;">
+
+</div>
+
+<textarea id="mesaj" placeholder="Mesaj pentru mirii..."></textarea>
+
+<button type="submit">Trimite confirmarea</button>
+
+</form>
+
+<div id="successMessage" class="success">
+    Vă mulțumim pentru răspuns 🤍
+</div>
+
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
