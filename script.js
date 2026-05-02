@@ -1,12 +1,7 @@
 /* ============================================ */
-/* URL-UL GOOGLE SHEETS - POATE FI MODIFICAT DOAR AICI */
+/* URL-UL GOOGLE SHEETS */
 /* ============================================ */
-// ACEASTA ESTE SINGURA LINIE PE CARE TREBUIE S-O MODIFICI DACA SCHIMBI URL-UL
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyySX0SJ9AxPz5VYh-mJgYLqls1UThlSE61J2qFQkjF4b_IG1f4OJA8mpWJdzR6Y3SC/exec";
-
-/* ============================================ */
-/* RESTUL CODULUI NU TREBUIE MODIFICAT */
-/* ============================================ */
 
 /* MENU */
 function toggleMenu(){
