@@ -27,15 +27,29 @@ background-color: var(--cream);
 }
 
 /* ============================================ */
-/* FUNDAL MULȚUMIRE - VERSIUNE OPTIMIZATĂ */
+/* FUNDAL MULȚUMIRE - FĂRĂ ZOOM, SE VEDE TOATĂ IMAGINEA */
 /* ============================================ */
 body.thankyou-background {
     background-image: url('imagini/Va_multumim.jpg');
-    background-size: cover;
+    background-size: contain;  /* contain = fără zoom, se vede toată imaginea */
     background-position: center;
-    background-attachment: fixed;
     background-repeat: no-repeat;
     background-color: var(--cream);
+}
+
+/* Pe desktop, folosim attachment fixed */
+@media(min-width: 901px){
+    body.thankyou-background {
+        background-attachment: fixed;
+    }
+}
+
+/* Pe mobil, attachment scroll pentru performanță */
+@media(max-width: 900px){
+    body.thankyou-background {
+        background-attachment: scroll;
+        background-size: contain;
+    }
 }
 
 body.thankyou-background .confirmare {
@@ -52,8 +66,8 @@ body.thankyou-background .confirmare {
 
 body.thankyou-background .success {
     color: var(--gold);
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-    background: rgba(0,0,0,0.5);
+    text-shadow: 2px 2px 12px rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.55);
     padding: 20px 40px;
     border-radius: 20px;
     display: block !important;
@@ -61,6 +75,7 @@ body.thankyou-background .success {
     font-size: 3rem;
     max-width: 90%;
     margin: 0 auto;
+    backdrop-filter: blur(4px);
 }
 
 body.thankyou-background .rsvp-form,
@@ -70,7 +85,7 @@ body.thankyou-background .confirmare h2 {
 }
 
 body.thankyou-background .header {
-    background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
 }
 
 /* NAVBAR */
@@ -587,7 +602,7 @@ color:var(--gold);
 }
 
 /* ============================================ */
-/* MOBILE - ECRANE PÂNĂ LA 900px */
+/* TABLETĂ ȘI MOBILE - ECRANE PÂNĂ LA 900px */
 /* ============================================ */
 @media(max-width:900px){
 nav{display:none;}
@@ -631,19 +646,21 @@ justify-content:center;
 .success {font-size:2.4rem;}
 .noi-grid img {height:280px;}
 
-/* FUNDAL MULȚUMIRE PE MOBIL */
-body.thankyou-background .success {
-font-size: 2rem !important;
-padding: 15px 25px !important;
-background: rgba(0,0,0,0.5) !important;
-}
+/* FUNDAL MULȚUMIRE PE MOBIL - FĂRĂ ZOOM */
 body.thankyou-background {
-background-attachment: scroll !important;
+background-attachment: scroll;
+background-size: contain !important;
+background-position: center;
+}
+body.thankyou-background .success {
+font-size: 2rem;
+padding: 15px 25px;
+background: rgba(0,0,0,0.6);
 }
 }
 
 /* ============================================ */
-/* MOBILE - ECRANE SUB 480px */
+/* TELEFON MIC - ECRANE SUB 480px */
 /* ============================================ */
 @media(max-width:480px){
 .hero h1 {font-size:3.8rem;}
@@ -664,9 +681,13 @@ background-attachment: scroll !important;
 .confirmare h2 {font-size:3.3rem;}
 .confirmare-intro {font-size:1.7rem;}
 
-/* FUNDAL MULȚUMIRE PE ECRANE FOARTE MICI */
+/* FUNDAL MULȚUMIRE PE TELEFON MIC - FĂRĂ ZOOM */
+body.thankyou-background {
+background-size: contain !important;
+}
 body.thankyou-background .success {
-font-size: 1.5rem !important;
-padding: 12px 20px !important;
+font-size: 1.5rem;
+padding: 12px 20px;
+background: rgba(0,0,0,0.65);
 }
 }
