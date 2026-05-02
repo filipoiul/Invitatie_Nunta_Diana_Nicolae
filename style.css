@@ -27,11 +27,11 @@ background-color: var(--cream);
 }
 
 /* ============================================ */
-/* FUNDAL MULȚUMIRE - FĂRĂ DREPTUNGHI ALB */
+/* FUNDAL MULȚUMIRE - VERSIUNE OPTIMIZATĂ */
 /* ============================================ */
 body.thankyou-background {
     background-image: url('imagini/Va_multumim.jpg');
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -53,12 +53,14 @@ body.thankyou-background .confirmare {
 body.thankyou-background .success {
     color: var(--gold);
     text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.5);
     padding: 20px 40px;
     border-radius: 20px;
     display: block !important;
     text-align: center;
     font-size: 3rem;
+    max-width: 90%;
+    margin: 0 auto;
 }
 
 body.thankyou-background .rsvp-form,
@@ -584,7 +586,9 @@ font-size:2.3rem;
 color:var(--gold);
 }
 
-/* MOBILE */
+/* ============================================ */
+/* MOBILE - ECRANE PÂNĂ LA 900px */
+/* ============================================ */
 @media(max-width:900px){
 nav{display:none;}
 .menu-toggle{
@@ -626,9 +630,21 @@ justify-content:center;
 .rsvp-form button[type="submit"] {font-size:1.4rem;padding:18px;}
 .success {font-size:2.4rem;}
 .noi-grid img {height:280px;}
-body.thankyou-background .success {font-size: 2rem;padding: 15px 25px;}
+
+/* FUNDAL MULȚUMIRE PE MOBIL */
+body.thankyou-background .success {
+font-size: 2rem !important;
+padding: 15px 25px !important;
+background: rgba(0,0,0,0.5) !important;
+}
+body.thankyou-background {
+background-attachment: scroll !important;
+}
 }
 
+/* ============================================ */
+/* MOBILE - ECRANE SUB 480px */
+/* ============================================ */
 @media(max-width:480px){
 .hero h1 {font-size:3.8rem;}
 .hero .intro-text {font-size:1.8rem;}
@@ -647,5 +663,10 @@ body.thankyou-background .success {font-size: 2rem;padding: 15px 25px;}
 .map-btn {font-size:1rem;padding:10px 25px;}
 .confirmare h2 {font-size:3.3rem;}
 .confirmare-intro {font-size:1.7rem;}
-body.thankyou-background .success {font-size: 1.5rem;padding: 12px 20px;}
+
+/* FUNDAL MULȚUMIRE PE ECRANE FOARTE MICI */
+body.thankyou-background .success {
+font-size: 1.5rem !important;
+padding: 12px 20px !important;
+}
 }
