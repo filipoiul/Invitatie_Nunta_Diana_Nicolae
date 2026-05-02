@@ -133,9 +133,38 @@ if(parcareSelect) {
     };
 }
 
+/* FUNCȚIE PENTRU A ARĂTA FUNDALUL DE MULȚUMIRE */
+function showThankYouScreen() {
+    // Ascunde formularul
+    if(rsvpForm) rsvpForm.style.display = "none";
+    
+    // Arată mesajul de succes
+    if(successMessage) successMessage.style.display = "block";
+    
+    // Adaugă fundalul de mulțumire
+    document.body.classList.add('thankyou-background');
+    
+    // Ascunde elementele inutile din secțiunea confirmare
+    const confirmareIntro = document.querySelector('.confirmare-intro');
+    if(confirmareIntro) confirmareIntro.style.display = "none";
+    
+    const confirmareTitle = document.querySelector('.confirmare h2');
+    if(confirmareTitle) confirmareTitle.style.display = "none";
+    
+    // Derulează la mesaj
+    setTimeout(() => {
+        if(confirmareSection) {
+            confirmareSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }, 100);
+}
+
 if(rsvpForm) {
     rsvpForm.addEventListener("submit", e => {
         e.preventDefault();
+        
+        // ARĂTĂ IMAGINEA IMEDIAT, INDIFERENT DE OPȚIUNE
+        showThankYouScreen();
         
         let data = new FormData();
         
@@ -172,35 +201,8 @@ if(rsvpForm) {
             data.append("mesaj", document.getElementById('mesaj') ? document.getElementById('mesaj').value : "");
         }
         
+        // Trimite datele în fundal (fără să așteptăm răspunsul)
         fetch(SCRIPT_URL, { method: "POST", body: data })
-            .then(() => {
-                rsvpForm.style.display = "none";
-                successMessage.style.display = "block";
-                document.body.classList.add('thankyou-background');
-                const confirmareIntro = document.querySelector('.confirmare-intro');
-                if(confirmareIntro) {
-                    confirmareIntro.style.display = "none";
-                }
-                const confirmareTitle = document.querySelector('.confirmare h2');
-                if(confirmareTitle) {
-                    confirmareTitle.style.display = "none";
-                }
-                confirmareSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                rsvpForm.style.display = "none";
-                successMessage.style.display = "block";
-                document.body.classList.add('thankyou-background');
-                const confirmareIntro = document.querySelector('.confirmare-intro');
-                if(confirmareIntro) {
-                    confirmareIntro.style.display = "none";
-                }
-                const confirmareTitle = document.querySelector('.confirmare h2');
-                if(confirmareTitle) {
-                    confirmareTitle.style.display = "none";
-                }
-                confirmareSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            });
+            .catch(error => console.error("Error:", error));
     });
 }
