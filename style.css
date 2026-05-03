@@ -27,16 +27,17 @@ background-color: var(--cream);
 }
 
 /* ============================================ */
-/* FUNDAL MULȚUMIRE - FĂRĂ ZOOM, IMAGINI DIFERITE */
+/* FUNDAL MULȚUMIRE - SOLUȚIE DEFINITIVĂ */
 /* ============================================ */
 
 /* Desktop - imaginea normală */
 body.thankyou-background {
     background-image: url('imagini/Va_multumim.jpg');
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-color: var(--cream);
+    min-height: 100vh;
 }
 
 /* Pe desktop, folosim attachment fixed */
@@ -50,11 +51,11 @@ body.thankyou-background {
 @media(max-width: 900px){
     body.thankyou-background {
         background-image: url('imagini/Va_multumim_v1.jpg');
-        background-size: contain !important;
+        background-size: cover !important;
         background-attachment: scroll;
         background-position: center;
         background-repeat: no-repeat;
-        background-color: var(--cream);
+        min-height: 100vh;
     }
 }
 
@@ -62,12 +63,13 @@ body.thankyou-background .confirmare {
     background: transparent !important;
     box-shadow: none !important;
     backdrop-filter: none !important;
-    padding: 100px 20px;
-    min-height: 100vh;
+    padding: 0 20px !important;
+    min-height: 100vh !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 0;
 }
 
 body.thankyou-background .success {
@@ -655,7 +657,12 @@ justify-content:center;
 /* FUNDAL MULȚUMIRE PE MOBIL */
 body.thankyou-background {
 background-attachment: scroll;
-background-size: contain !important;
+background-size: cover !important;
+min-height: 100vh;
+}
+body.thankyou-background .confirmare {
+min-height: 100vh !important;
+padding: 0 20px !important;
 }
 body.thankyou-background .success {
 font-size: 2rem;
@@ -688,7 +695,12 @@ background: rgba(0,0,0,0.6);
 
 /* FUNDAL MULȚUMIRE PE TELEFON MIC */
 body.thankyou-background {
-background-size: contain !important;
+background-size: cover !important;
+min-height: 100vh;
+}
+body.thankyou-background .confirmare {
+min-height: 100vh !important;
+padding: 0 15px !important;
 }
 body.thankyou-background .success {
 font-size: 1.5rem;
