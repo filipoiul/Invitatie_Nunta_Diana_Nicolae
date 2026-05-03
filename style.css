@@ -27,11 +27,11 @@ background-color: var(--cream);
 }
 
 /* ============================================ */
-/* FUNDAL MULȚUMIRE - FĂRĂ ZOOM, SE VEDE TOATĂ IMAGINEA */
+/* FUNDAL MULȚUMIRE - COVER CU TAIERE LATERALĂ */
 /* ============================================ */
 body.thankyou-background {
     background-image: url('imagini/Va_multumim.jpg');
-    background-size: contain;  /* contain = fără zoom, se vede toată imaginea */
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-color: var(--cream);
@@ -48,7 +48,6 @@ body.thankyou-background {
 @media(max-width: 900px){
     body.thankyou-background {
         background-attachment: scroll;
-        background-size: contain;
     }
 }
 
@@ -646,11 +645,9 @@ justify-content:center;
 .success {font-size:2.4rem;}
 .noi-grid img {height:280px;}
 
-/* FUNDAL MULȚUMIRE PE MOBIL - FĂRĂ ZOOM */
+/* FUNDAL MULȚUMIRE PE MOBIL */
 body.thankyou-background {
 background-attachment: scroll;
-background-size: contain !important;
-background-position: center;
 }
 body.thankyou-background .success {
 font-size: 2rem;
@@ -681,10 +678,7 @@ background: rgba(0,0,0,0.6);
 .confirmare h2 {font-size:3.3rem;}
 .confirmare-intro {font-size:1.7rem;}
 
-/* FUNDAL MULȚUMIRE PE TELEFON MIC - FĂRĂ ZOOM */
-body.thankyou-background {
-background-size: contain !important;
-}
+/* FUNDAL MULȚUMIRE PE TELEFON MIC */
 body.thankyou-background .success {
 font-size: 1.5rem;
 padding: 12px 20px;
