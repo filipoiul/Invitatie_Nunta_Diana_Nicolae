@@ -92,13 +92,40 @@ const rsvpForm = document.getElementById('rsvpForm');
 const successMessage = document.getElementById('successMessage');
 const confirmareSection = document.getElementById('confirmare');
 
-if(particip) {
-    particip.onchange = () => {
-        restForm.style.display = particip.value === "Da" ? "block" : "none";
+// Inițial, ascundem restForm
+if(restForm) {
+    restForm.style.display = "none";
+}
+
+// Funcție pentru a verifica dacă să arătăm restForm
+function checkAndShowRestForm() {
+    if(particip.value === "Da" && numePrincipal && numePrincipal.value.trim() !== "") {
+        restForm.style.display = "block";
+    } else if(particip.value !== "Da") {
+        restForm.style.display = "none";
+        // Resetează selecția de persoane
         if(persoaneContainer) persoaneContainer.innerHTML = "";
         selectedPersoane = 0;
         document.querySelectorAll(".persoane-btns button").forEach(b => b.classList.remove("active"));
+    }
+}
+
+// Eveniment pentru schimbarea opțiunii de participare
+if(particip) {
+    particip.onchange = () => {
+        checkAndShowRestForm();
     };
+}
+
+// Eveniment pentru completarea numelui (keyup - în timp ce tastează)
+if(numePrincipal) {
+    numePrincipal.addEventListener('keyup', function() {
+        checkAndShowRestForm();
+    });
+    // Și pentru când se pierde focusul
+    numePrincipal.addEventListener('blur', function() {
+        checkAndShowRestForm();
+    });
 }
 
 window.selectPersoane = function(n, el) {
@@ -119,6 +146,7 @@ window.selectPersoane = function(n, el) {
                     <option value="normal">Meniu normal</option>
                     <option value="vegan">Meniu vegan</option>
                     <option value="copil">Meniu copil</option>
+                    <option value="fara">Fără meniu (copil)</option>
                 </select>
             `;
         }
@@ -163,7 +191,69 @@ if(rsvpForm) {
     rsvpForm.addEventListener("submit", e => {
         e.preventDefault();
         
-        // ARĂTĂ IMAGINEA IMEDIAT, INDIFERENT DE OPȚIUNE
+        // VALIDARE NUME PRINCIPAL - obligatoriu
+        if(!numePrincipal || !numePrincipal.value.trim()) {
+            alert("📝 Vă rugăm să completați câmpul cu numele dumneavoastră!");
+            numePrincipal.focus();
+            return;
+        }
+        
+        // Dacă participă, validează numele invitaților și meniurile
+        if(particip.value === "Da") {
+            
+            // Verifică dacă a selectat numărul de persoane
+            if(selectedPersoane === 0) {
+                alert("👥 Vă rugăm să selectați numărul de persoane care participă!");
+                return;
+            }
+            
+            // Validare nume invitați
+            let numeInvitatGol = false;
+            let indexNumeGol = 0;
+            const numeInvitatList = document.querySelectorAll(".pers-nume");
+            for(let i = 0; i < numeInvitatList.length; i++) {
+                if(!numeInvitatList[i].value.trim()) {
+                    numeInvitatGol = true;
+                    indexNumeGol = i + 1;
+                    break;
+                }
+            }
+            
+            if(numeInvitatGol) {
+                alert(`📝 Vă rugăm să completați numele persoanei ${indexNumeGol}!`);
+                return;
+            }
+            
+            // Validare meniuri
+            let meniuInvalid = false;
+            let indexMeniuGol = 0;
+            const meniuList = document.querySelectorAll(".pers-meniu");
+            for(let i = 0; i < meniuList.length; i++) {
+                if(!meniuList[i].value || meniuList[i].value === "") {
+                    meniuInvalid = true;
+                    indexMeniuGol = i + 1;
+                    break;
+                }
+            }
+            
+            if(meniuInvalid) {
+                alert(`🍽️ Vă rugăm să selectați tipul de meniu pentru persoana ${indexMeniuGol}!`);
+                return;
+            }
+            
+            // Validare parcare - dacă a selectat "Da", numărul mașinii este obligatoriu
+            if(parcareSelect && parcareSelect.value === "da") {
+                if(!parcareInput || !parcareInput.value.trim()) {
+                    alert("🚗 Vă rugăm să completați numărul de înmatriculare al mașinii!");
+                    parcareInput.focus();
+                    return;
+                }
+            }
+        }
+        
+        // Mesajul către miri NU este obligatoriu, deci nu îl validăm
+        
+        // ARĂTĂ IMAGINEA IMEDIAT
         showThankYouScreen();
         
         let data = new FormData();
@@ -201,7 +291,7 @@ if(rsvpForm) {
             data.append("mesaj", document.getElementById('mesaj') ? document.getElementById('mesaj').value : "");
         }
         
-        // Trimite datele în fundal (fără să așteptăm răspunsul)
+        // Trimite datele în fundal
         fetch(SCRIPT_URL, { method: "POST", body: data })
             .catch(error => console.error("Error:", error));
     });
