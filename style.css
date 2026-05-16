@@ -35,8 +35,12 @@ body.thankyou-background {
     /* ===== SCHIMBĂ AICI NUMELE IMAGINII PENTRU DESKTOP ===== */
     background-image: url('imagini/Va_multumim.jpg');
     
+    /* ===== ZOOM: cover / contain / 80% auto ===== */
     background-size: cover;
-    background-position: center;
+    
+    /* ===== POZIȚIA: center / center 25% / 30% center ===== */
+    background-position: center 25%;
+    
     background-repeat: no-repeat;
     background-color: var(--cream);
     min-height: 100vh;
@@ -57,8 +61,12 @@ body.thankyou-background {
         /* ===== SCHIMBĂ AICI NUMELE IMAGINII PENTRU MOBIL ===== */
         background-image: url('imagini/Va_multumim_v1.jpg') !important;
         
+        /* ===== ZOOM PE MOBIL ===== */
         background-size: cover !important;
-        background-position: center !important;
+        
+        /* ===== POZIȚIA PE MOBIL (poate fi diferită de desktop) ===== */
+        background-position: center 30% !important;
+        
         background-attachment: scroll;
         background-repeat: no-repeat;
         min-height: 100vh;
