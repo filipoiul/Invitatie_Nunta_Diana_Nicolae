@@ -117,12 +117,11 @@ if(particip) {
     };
 }
 
-// Eveniment pentru completarea numelui (keyup - în timp ce tastează)
+// Eveniment pentru completarea numelui
 if(numePrincipal) {
     numePrincipal.addEventListener('keyup', function() {
         checkAndShowRestForm();
     });
-    // Și pentru când se pierde focusul
     numePrincipal.addEventListener('blur', function() {
         checkAndShowRestForm();
     });
@@ -163,23 +162,16 @@ if(parcareSelect) {
 
 /* FUNCȚIE PENTRU A ARĂTA FUNDALUL DE MULȚUMIRE */
 function showThankYouScreen() {
-    // Ascunde formularul
     if(rsvpForm) rsvpForm.style.display = "none";
-    
-    // Arată mesajul de succes
     if(successMessage) successMessage.style.display = "block";
-    
-    // Adaugă fundalul de mulțumire
     document.body.classList.add('thankyou-background');
     
-    // Ascunde elementele inutile din secțiunea confirmare
     const confirmareIntro = document.querySelector('.confirmare-intro');
     if(confirmareIntro) confirmareIntro.style.display = "none";
     
     const confirmareTitle = document.querySelector('.confirmare h2');
     if(confirmareTitle) confirmareTitle.style.display = "none";
     
-    // Derulează la mesaj
     setTimeout(() => {
         if(confirmareSection) {
             confirmareSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -191,17 +183,16 @@ if(rsvpForm) {
     rsvpForm.addEventListener("submit", e => {
         e.preventDefault();
         
-        // VALIDARE NUME PRINCIPAL - obligatoriu
+        // VALIDARE NUME PRINCIPAL
         if(!numePrincipal || !numePrincipal.value.trim()) {
             alert("📝 Vă rugăm să completați câmpul cu numele dumneavoastră!");
             numePrincipal.focus();
             return;
         }
         
-        // Dacă participă, validează numele invitaților și meniurile
+        // Dacă participă, validează
         if(particip.value === "Da") {
             
-            // Verifică dacă a selectat numărul de persoane
             if(selectedPersoane === 0) {
                 alert("👥 Vă rugăm să selectați numărul de persoane care participă!");
                 return;
@@ -241,7 +232,7 @@ if(rsvpForm) {
                 return;
             }
             
-            // Validare parcare - dacă a selectat "Da", numărul mașinii este obligatoriu
+            // Validare parcare
             if(parcareSelect && parcareSelect.value === "da") {
                 if(!parcareInput || !parcareInput.value.trim()) {
                     alert("🚗 Vă rugăm să completați numărul de înmatriculare al mașinii!");
@@ -251,9 +242,6 @@ if(rsvpForm) {
             }
         }
         
-        // Mesajul către miri NU este obligatoriu, deci nu îl validăm
-        
-        // ARĂTĂ IMAGINEA IMEDIAT
         showThankYouScreen();
         
         let data = new FormData();
@@ -291,7 +279,6 @@ if(rsvpForm) {
             data.append("mesaj", document.getElementById('mesaj') ? document.getElementById('mesaj').value : "");
         }
         
-        // Trimite datele în fundal
         fetch(SCRIPT_URL, { method: "POST", body: data })
             .catch(error => console.error("Error:", error));
     });
