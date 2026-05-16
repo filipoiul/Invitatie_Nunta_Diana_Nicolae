@@ -26,13 +26,15 @@ transition: all 0.5s ease;
 background-color: var(--cream);
 }
 
-/* ============================================ */
-/* FUNDAL MULȚUMIRE - SOLUȚIE DEFINITIVĂ */
-/* ============================================ */
+/* ===================================================== */
+/* FUNDAL MULȚUMIRE - IMAGINI DIFERITE PE DESKTOP ȘI MOBIL */
+/* ===================================================== */
 
-/* Desktop - imaginea normală */
+/* DESKTOP - imaginea mare */
 body.thankyou-background {
+    /* ===== SCHIMBĂ AICI NUMELE IMAGINII PENTRU DESKTOP ===== */
     background-image: url('imagini/Va_multumim.jpg');
+    
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -40,20 +42,24 @@ body.thankyou-background {
     min-height: 100vh;
 }
 
-/* Pe desktop, folosim attachment fixed */
+/* Pe desktop, fundal fix */
 @media(min-width: 901px){
     body.thankyou-background {
         background-attachment: fixed;
     }
 }
 
-/* Pe mobil (sub 900px) - folosește imaginea mai mică */
+/* ============================================ */
+/* MOBIL (sub 900px) - imaginea mai mică */
+/* ============================================ */
 @media(max-width: 900px){
     body.thankyou-background {
-        background-image: url('imagini/Va_multumim_v1.jpg');
+        /* ===== SCHIMBĂ AICI NUMELE IMAGINII PENTRU MOBIL ===== */
+        background-image: url('imagini/Va_multumim_v1.jpg') !important;
+        
         background-size: cover !important;
+        background-position: center !important;
         background-attachment: scroll;
-        background-position: center;
         background-repeat: no-repeat;
         min-height: 100vh;
     }
@@ -241,7 +247,6 @@ font-size:2.3rem;
 margin:0 0 5px 0;
 }
 
-/* SPATIU MARE DUPĂ NUMELE NAȘILOR - 80px */
 .hero .sponsor-names {
 font-size:2.3rem;
 margin:0 0 80px 0;
@@ -610,7 +615,7 @@ color:var(--gold);
 }
 
 /* ============================================ */
-/* TABLETĂ ȘI MOBILE - ECRANE PÂNĂ LA 900px */
+/* MOBILE - ECRANE PÂNĂ LA 900px */
 /* ============================================ */
 @media(max-width:900px){
 nav{display:none;}
@@ -654,16 +659,6 @@ justify-content:center;
 .success {font-size:2.4rem;}
 .noi-grid img {height:280px;}
 
-/* FUNDAL MULȚUMIRE PE MOBIL */
-body.thankyou-background {
-background-attachment: scroll;
-background-size: cover !important;
-min-height: 100vh;
-}
-body.thankyou-background .confirmare {
-min-height: 100vh !important;
-padding: 0 20px !important;
-}
 body.thankyou-background .success {
 font-size: 2rem;
 padding: 15px 25px;
@@ -693,15 +688,6 @@ background: rgba(0,0,0,0.6);
 .confirmare h2 {font-size:3.3rem;}
 .confirmare-intro {font-size:1.7rem;}
 
-/* FUNDAL MULȚUMIRE PE TELEFON MIC */
-body.thankyou-background {
-background-size: cover !important;
-min-height: 100vh;
-}
-body.thankyou-background .confirmare {
-min-height: 100vh !important;
-padding: 0 15px !important;
-}
 body.thankyou-background .success {
 font-size: 1.5rem;
 padding: 12px 20px;
